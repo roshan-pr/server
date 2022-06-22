@@ -36,7 +36,6 @@ const onNewConnection = (socket) => {
   socket.setEncoding('utf8');
   socket.on('data', (chunk) => {
     const request = parseRequest(chunk);
-    console.log(request);
     socket.write(response(html('Server')));
     socket.end();
   });
