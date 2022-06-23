@@ -1,14 +1,17 @@
 # TODO
 
   - [ ] Make the socket secure, now socket is exposed to any actions
-    - [ ] Enclose the socket in a class and give behaviors on socket
+  - [ ] Enclose the socket in a class and give behaviors on socket
 
-  - [ ] Introduce status code to the response
-  - [ ] Move the response class to separate file
+# CONSIDER
+
+  - [ ] Introduce serving file content
 
 
 # DONE
 
+  - [x] Introduce status code to the response
+  - [x] Move the response class to separate file
   - [x] Introduce response entity
   - [x] Separate request handler to separate file
   - [x] Make the server independent

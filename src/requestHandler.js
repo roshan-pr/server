@@ -9,7 +9,7 @@ const requestHandler = ({ uri }, response) => {
     response.sent(html('Alphabets'));
     return;
   }
-  response.sent(html('unknown'));
+  response.sent(html('unknown'), 404);
 };
 
-exports.requestHandler = requestHandler;
+module.exports = { requestHandler };

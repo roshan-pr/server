@@ -2,7 +2,7 @@ const assert = require('assert');
 const { requestHandler } = require('../src/requestHandler.js');
 
 describe('requestHandler', () => {
-  it.only('Should give response for root /', () => {
+  it('Should give response for root /', () => {
     let actualResponse;
     const mockedResponse = {
       sent: (response) => {
