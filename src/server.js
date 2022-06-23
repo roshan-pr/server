@@ -1,11 +1,27 @@
 const { createServer } = require('net');
 const { parseRequest } = require('./parseRequest.js');
 
+class Response {
+  #socket;
+  constructor(socket) {
+    this.#socket = socket;
+  }
+
+  #write(response) {
+    this.#socket.write(response);
+  }
+
+  sent(body) {
+    this.#write(`HTTP/1.1 200\r\n\r\n${body}\r\n`);
+  }
+}
+
 const onNewConnection = (socket, requestHandler) => {
   socket.setEncoding('utf8');
   socket.on('data', (chunk) => {
     const request = parseRequest(chunk);
-    requestHandler(request, socket);
+    const response = new Response(socket);
+    requestHandler(request, response);
     socket.end();
   });
 };

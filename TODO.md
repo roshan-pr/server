@@ -3,11 +3,13 @@
   - [ ] Make the socket secure, now socket is exposed to any actions
     - [ ] Enclose the socket in a class and give behaviors on socket
 
-  - [ ] Introduce response entity
+  - [ ] Introduce status code to the response
+  - [ ] Move the response class to separate file
 
 
 # DONE
 
+  - [x] Introduce response entity
   - [x] Separate request handler to separate file
   - [x] Make the server independent
     - [x] Pass the request handler from the main

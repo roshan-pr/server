@@ -1,13 +1,15 @@
 const html = header => `<html><body><h1>${header}</h1></body></html>`;
 
-const response = html => `HTTP/1.1 200\r\n\r\n${html}\r\n`;
-
-const requestHandler = ({ uri }, socket) => {
+const requestHandler = ({ uri }, response) => {
   if (uri === '/') {
-    socket.write(response(html('Hello')));
+    response.sent(html('Hello'));
     return;
   }
-  socket.write(response(html('unknown')));
+  if (uri === '/abc') {
+    response.sent(html('Alphabets'));
+    return;
+  }
+  response.sent(html('unknown'));
 };
 
 exports.requestHandler = requestHandler;
