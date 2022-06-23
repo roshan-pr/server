@@ -6,6 +6,7 @@ const onNewConnection = (socket, requestHandler) => {
   socket.setEncoding('utf8');
   socket.on('data', (chunk) => {
     const request = parseRequest(chunk);
+    console.log(request.method, request.uri);
     const response = new Response(socket);
     requestHandler(request, response);
   });

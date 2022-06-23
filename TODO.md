@@ -1,15 +1,14 @@
 # TODO
 
-  - [ ] Make the socket secure, now socket is exposed to any actions
-  - [ ] Enclose the socket in a class and give behaviors on socket
 
 # CONSIDER
-
-  - [ ] Introduce serving file content
 
 
 # DONE
 
+  - [x] Introduce serving file content
+  - [x] Make the socket secure, now socket is exposed to any actions
+  - [x] Enclose the socket in a class and give behaviors on socket
   - [x] Introduce status code to the response
   - [x] Move the response class to separate file
   - [x] Introduce response entity
