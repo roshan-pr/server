@@ -13,7 +13,8 @@ const onNewConnection = (socket, requestHandler) => {
 const startServer = (port, requestHandler) => {
   const server = createServer((socket) =>
     onNewConnection(socket, requestHandler));
+
   server.listen(port, () => console.log(`Server listening to ${port}`));
 };
 
-module.exports = { startServer };
+module.exports = { onNewConnection, startServer };
