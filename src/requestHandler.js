@@ -9,7 +9,8 @@ const requestHandler = ({ uri }, response) => {
     response.sent(html('Alphabets'));
     return;
   }
-  response.sent(html('unknown'), 404);
+  response.statusCode = 404;
+  response.sent(html('unknown'));
 };
 
 module.exports = { requestHandler };
