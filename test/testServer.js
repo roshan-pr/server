@@ -3,7 +3,7 @@ const assert = require('assert');
 const {
   parseRequest,
   parseHeaders,
-  parseRequestLine } = require('../src/server.js');
+  parseRequestLine } = require('../src/parseRequest');
 
 describe('parseRequest', () => {
   it('should parse the given request line', () => {

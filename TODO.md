@@ -1,11 +1,11 @@
 # TODO
 
   - [ ] Add request handler
-  - [ ] Move parser to separate file
 
 
 # DONE
 
+  - [x] Move parser to separate file
   - [x] Parse header to lower case
   - [x] Parse the request from the client
   - [x] Moved server to src
