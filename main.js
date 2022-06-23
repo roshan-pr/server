@@ -1,4 +1,4 @@
-const { host } = require('./src/server.js');
+const { startServer } = require('./src/server.js');
 
 const html = body => `<html><body><h1>${body}</h1></body></html>`;
 
@@ -14,7 +14,7 @@ const requestHandler = ({ uri }, socket) => {
 
 const main = () => {
   const PORT = 8000;
-  host(PORT, requestHandler);
+  startServer(PORT, requestHandler);
 };
 
 main();

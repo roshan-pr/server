@@ -10,10 +10,10 @@ const onNewConnection = (socket, requestHandler) => {
   });
 };
 
-const host = (port, requestHandler) => {
+const startServer = (port, requestHandler) => {
   const server = createServer((socket) =>
     onNewConnection(socket, requestHandler));
   server.listen(port, () => console.log(`Server listening to ${port}`));
 };
 
-module.exports = { host };
+module.exports = { startServer };
