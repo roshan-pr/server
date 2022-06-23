@@ -1,6 +1,6 @@
 const { startServer } = require('./src/server.js');
 
-const html = body => `<html><body><h1>${body}</h1></body></html>`;
+const html = header => `<html><body><h1>${header}</h1></body></html>`;
 
 const response = html => `HTTP/1.1 200\r\n\r\n${html}\r\n`;
 
