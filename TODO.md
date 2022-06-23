@@ -1,11 +1,12 @@
 # TODO
 
-  - [ ] Parse header to lower case
   - [ ] Add request handler
+  - [ ] Move parser to separate file
 
 
 # DONE
 
+  - [x] Parse header to lower case
   - [x] Parse the request from the client
   - [x] Moved server to src
   - [x] Write test for parseRequestLine

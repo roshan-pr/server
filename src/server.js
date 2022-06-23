@@ -19,7 +19,7 @@ const parseHeaders = (lines) => {
   let index = 0;
   while (index < lines.length && lines[index].length > 0) {
     const [header, value] = parseHeader(lines[index]);
-    headers[header] = value;
+    headers[header.toLowerCase()] = value;
     index++;
   }
   return headers;

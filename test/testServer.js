@@ -1,4 +1,5 @@
 const assert = require('assert');
+
 const {
   parseRequest,
   parseHeaders,
@@ -22,7 +23,7 @@ describe('parseRequest', () => {
       method: 'GET',
       uri: '/',
       httpVersion: 'HTTP/1.1',
-      headers: { Host: 'localhost:8000' }
+      headers: { host: 'localhost:8000' }
     };
     assert.deepStrictEqual(actual, expected);
   });
@@ -40,18 +41,29 @@ describe('parseHeaders', () => {
   it('should parse the given header', () => {
     const actual = parseHeaders(['accept: */*']);
     const expected = { accept: '*/*' };
+
     assert.deepStrictEqual(actual, expected);
   });
 
   it('should parse header with multiple ":"', () => {
     const actual = parseHeaders(['Host: localhost:8000']);
-    const expected = { Host: 'localhost:8000' };
+    const expected = { host: 'localhost:8000' };
+
     assert.deepStrictEqual(actual, expected);
   });
 
   it('should parse multiple headers', () => {
-    const actual = parseHeaders(['Host: localhost:8000', 'User-Agent: curl/7.64.1']);
-    const expected = { Host: 'localhost:8000', 'User-Agent': 'curl/7.64.1' };
+    const actual = parseHeaders([
+      'Host: localhost:8000', 'User-Agent: curl/7.64.1']);
+    const expected = { host: 'localhost:8000', 'user-agent': 'curl/7.64.1' };
+
+    assert.deepStrictEqual(actual, expected);
+  });
+
+  it('should change the header to lower case', () => {
+    const actual = parseHeaders(['HOST: localhost:8000']);
+    const expected = { host: 'localhost:8000' };
+
     assert.deepStrictEqual(actual, expected);
   });
 });
