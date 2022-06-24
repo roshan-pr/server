@@ -4,10 +4,10 @@ const { Response } = require('../src/response.js');
 
 const mockSocket = () => {
   return {
-    actualResponse: '',
+    actualResponse: [],
     isEnd: false,
     write: function (response) {
-      this.actualResponse += response;
+      this.actualResponse.push(response);
     },
     end: function () {
       this.isEnd = true;
@@ -21,8 +21,8 @@ describe('requestHandler', () => {
     const response = new Response(mockedSocket);
     requestHandler({ uri: '/' }, response);
 
-    const expectedResponse = 'HTTP/1.1 200 OK\r\n\r\n<html><body><h1>Hello</h1></body></html>';
-    assert.strictEqual(mockedSocket.actualResponse, expectedResponse);
+    const expectedResponse = ['HTTP/1.1 200 OK\r\n', 'content-length:40\r\n', '\r\n', '<html><body><h1>Hello</h1></body></html>'];
+    assert.deepStrictEqual(mockedSocket.actualResponse, expectedResponse);
   });
 
   it('Should give unknown and set status code for wrong uri', () => {
@@ -30,8 +30,8 @@ describe('requestHandler', () => {
     const response = new Response(mockedSocket);
     requestHandler({ uri: '/missing' }, response);
 
-    const expectedResponse = 'HTTP/1.1 404 file not found\r\n\r\n<html><body><h1>unknown</h1></body></html>';
-    assert.strictEqual(mockedSocket.actualResponse, expectedResponse);
+    const expectedResponse = ['HTTP/1.1 404 file not found\r\n', 'content-length:42\r\n', '\r\n', '<html><body><h1>unknown</h1></body></html>'];
+    assert.deepStrictEqual(mockedSocket.actualResponse, expectedResponse);
     assert.strictEqual(response.statusCode, 404);
   });
 });

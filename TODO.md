@@ -1,6 +1,7 @@
 # TODO
 
-  - [ ] Add headers to the response
+  - [ ] Add test for response
+  - [ ] Add test for server with event emitter
 
 
 # CONSIDER
@@ -8,6 +9,7 @@
 
 # DONE
 
+  - [x] Add headers to the response
   - [x] Introduce end method in response
   - [x] Handle images 
   - [x] Introduce serving file content
