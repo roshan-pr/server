@@ -1,14 +1,15 @@
 # TODO
 
   - [ ] Parameterize the path of the server to serve files from
-  - [ ] Handle dynamic handler like count
 
 
 # CONSIDER
+  - [ ] Introduce handler for logging the requests
 
 
 # DONE
 
+  - [x] Handle dynamic handler like count
   - [x] Utilize multiple handlers, to handle different requests
   - [x] Add test for response
   - [x] Add test for server with event emitter

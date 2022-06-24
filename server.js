@@ -1,7 +1,7 @@
-const { handleRequest } = require('./src/handler.js');
 const { createServer } = require('net');
 const { parseRequest } = require('./src/parseRequest.js');
 const { Response } = require('./src/response.js');
+const { createHandler } = require('./src/handler.js');
 
 const onNewConnection = (socket, requestHandler) => {
   socket.on('error', (err) => console.log(err.message));
@@ -23,6 +23,6 @@ const startServer = (port, requestHandler) => {
 };
 
 const PORT = 8000;
-startServer(PORT, handleRequest);
+startServer(PORT, createHandler(), process.argv[0]);
 
 module.exports = { onNewConnection, startServer };
