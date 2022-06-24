@@ -1,21 +1,17 @@
 const fs = require('fs');
 const html = header => `<html><body><h1>${header}</h1></body></html>`;
 
-const serveFileContent = (request, response) => {
-  let { uri } = request;
-  if (uri === '/') {
-    uri = '/sample';
-  }
+const serveFileContent = ({ uri }, response) => {
   const fileName = './public' + uri;
 
   if (!fs.existsSync(fileName)) {
     response.statusCode = 404;
-    response.sent(html('file not found'));
+    response.send(html('file not found'));
     return;
   }
 
   const content = fs.readFileSync(fileName);
-  response.sent(content);
+  response.send(content);
 };
 
 module.exports = { serveFileContent };
