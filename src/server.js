@@ -3,10 +3,12 @@ const { parseRequest } = require('./parseRequest.js');
 const { Response } = require('./response.js');
 
 const onNewConnection = (socket, requestHandler) => {
-  socket.setEncoding('utf8');
+  socket.on('error', (err) => console.log(err));
+
   socket.on('data', (chunk) => {
-    const request = parseRequest(chunk);
-    console.log(new Date(), request.method, request.uri);
+    const request = parseRequest(chunk.toString());
+    console.log(request.method, request.uri);
+
     const response = new Response(socket);
     requestHandler(request, response);
   });

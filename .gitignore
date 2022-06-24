@@ -1,2 +1,3 @@
 .eslintrc
 public
+node_modules

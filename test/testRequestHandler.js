@@ -23,6 +23,7 @@ describe('requestHandler', () => {
 
     const expectedResponse = ['HTTP/1.1 200 OK\r\n', 'content-length:40\r\n', '\r\n', '<html><body><h1>Hello</h1></body></html>'];
     assert.deepStrictEqual(mockedSocket.actualResponse, expectedResponse);
+    assert.ok(mockedSocket.isEnd);
   });
 
   it('Should give unknown and set status code for wrong uri', () => {

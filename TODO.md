@@ -1,7 +1,7 @@
 # TODO
 
-  - [ ] Add test for response
-  - [ ] Add test for server with event emitter
+  - [ ] Parameterize the path of the server to serve files from
+  - [ ] Utilize multiple handlers, to handle different requests
 
 
 # CONSIDER
@@ -9,6 +9,8 @@
 
 # DONE
 
+  - [x] Add test for response
+  - [x] Add test for server with event emitter
   - [x] Add headers to the response
   - [x] Introduce end method in response
   - [x] Handle images 
