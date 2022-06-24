@@ -3,14 +3,13 @@ const html = header => `<html><body><h1>${header}</h1></body></html>`;
 const requestHandler = ({ uri }, response) => {
   if (uri === '/') {
     response.send(html('Hello'));
-    return;
+    return true;
   }
   if (uri === '/abc') {
     response.send(html('Alphabets'));
-    return;
+    return true;
   }
-  response.statusCode = 404;
-  response.send(html('unknown'));
+  return false;
 };
 
 module.exports = { requestHandler };

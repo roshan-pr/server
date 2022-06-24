@@ -1,10 +1,9 @@
-// const { requestHandler } = require('./src/requestHandler.js');
-const { serveFileContent } = require('./src/serveFileContent.js');
-const { startServer } = require('./src/server.js');
+const { startServer } = require('./server.js');
+const { handleRequest } = require('./src/handler.js');
 
 const main = () => {
   const PORT = 8000;
-  startServer(PORT, serveFileContent);
+  startServer(PORT, handleRequest);
 };
 
 main();

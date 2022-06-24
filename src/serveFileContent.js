@@ -17,9 +17,7 @@ const serveFileContent = ({ uri }, response) => {
   const fileName = './public' + uri;
 
   if (!fs.existsSync(fileName)) {
-    response.statusCode = 404;
-    response.send('file not found');
-    return;
+    return false;
   }
 
   const extension = getExtension(fileName);
@@ -28,6 +26,7 @@ const serveFileContent = ({ uri }, response) => {
 
   const content = fs.readFileSync(fileName);
   response.send(content);
+  return false;
 };
 
 module.exports = { serveFileContent };

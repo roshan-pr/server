@@ -1,7 +1,7 @@
 # TODO
 
   - [ ] Parameterize the path of the server to serve files from
-  - [ ] Utilize multiple handlers, to handle different requests
+  - [ ] Handle dynamic handler like count
 
 
 # CONSIDER
@@ -9,6 +9,7 @@
 
 # DONE
 
+  - [x] Utilize multiple handlers, to handle different requests
   - [x] Add test for response
   - [x] Add test for server with event emitter
   - [x] Add headers to the response

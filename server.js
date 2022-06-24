@@ -1,9 +1,10 @@
+const { handleRequest } = require('./src/handler.js');
 const { createServer } = require('net');
-const { parseRequest } = require('./parseRequest.js');
-const { Response } = require('./response.js');
+const { parseRequest } = require('./src/parseRequest.js');
+const { Response } = require('./src/response.js');
 
 const onNewConnection = (socket, requestHandler) => {
-  socket.on('error', (err) => console.log(err));
+  socket.on('error', (err) => console.log(err.message));
 
   socket.on('data', (chunk) => {
     const request = parseRequest(chunk.toString());
@@ -20,5 +21,8 @@ const startServer = (port, requestHandler) => {
 
   server.listen(port, () => console.log(`Server listening to ${port}`));
 };
+
+const PORT = 8000;
+startServer(PORT, handleRequest);
 
 module.exports = { onNewConnection, startServer };
