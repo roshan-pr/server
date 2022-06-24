@@ -1,7 +1,6 @@
 # TODO
 
   - [ ] Add headers to the response
-  - [ ] Introduce end method in response
 
 
 # CONSIDER
@@ -9,6 +8,7 @@
 
 # DONE
 
+  - [x] Introduce end method in response
   - [x] Handle images 
   - [x] Introduce serving file content
   - [x] Make the socket secure, now socket is exposed to any actions

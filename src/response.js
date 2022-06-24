@@ -29,11 +29,15 @@ class Response {
     this.#socket.write(response);
   }
 
+  #end() {
+    this.#socket.end();
+  }
+
   sent(body) {
     this.#write(getStatusLine(this.#statusCode));
     this.#write(EOF);
     this.#write(body);
-    this.#socket.end();
+    this.#end();
   }
 }
 
