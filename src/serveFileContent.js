@@ -13,8 +13,8 @@ const determineContentType = (extension) => {
   return contentTypes[extension] || 'text/plain';
 };
 
-const serveFileContent = ({ uri }, response) => {
-  const fileName = './public' + uri;
+const serveFileContent = ({ uri }, response, resourceFrom) => {
+  const fileName = resourceFrom + uri;
 
   if (!fs.existsSync(fileName)) {
     return false;

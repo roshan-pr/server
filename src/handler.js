@@ -5,9 +5,9 @@ const { countRequest } = require('./countRequestHandler.js');
 
 const createHandler = () => {
   const handlers = [countRequest(), serveFileContent, requestHandler, noFileHandler];
-  return (request, response) => {
+  return (request, response, resourceFrom) => {
     for (const handler of handlers) {
-      if (handler(request, response)) {
+      if (handler(request, response, resourceFrom)) {
         return true;
       }
     }

@@ -1,6 +1,5 @@
 # TODO
 
-  - [ ] Parameterize the path of the server to serve files from
 
 
 # CONSIDER
@@ -9,6 +8,7 @@
 
 # DONE
 
+  - [x] Parameterize the path of the server, where to serve files from
   - [x] Handle dynamic handler like count
   - [x] Utilize multiple handlers, to handle different requests
   - [x] Add test for response
