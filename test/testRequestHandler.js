@@ -1,18 +1,24 @@
 const assert = require('assert');
 const { requestHandler } = require('../src/requestHandler.js');
+const { Response } = require('../src/response.js');
 
 describe('requestHandler', () => {
-  it('Should give response for root /', () => {
-    let actualResponse;
-    const mockedResponse = {
-      sent: (response) => {
-        actualResponse = response;
+  it.only('Should give response for root /', () => {
+    const mockedSocket = {
+      actualResponse: '',
+      isEnd: false,
+      write: function (response) {
+        this.actualResponse = response;
+      },
+      end: function () {
+        this.isEnd = true;
       }
     };
+    const response = new Response(mockedSocket);
+    requestHandler({ uri: '/' }, response);
 
-    requestHandler({ uri: '/' }, mockedResponse);
-    const expectedResponse = '<html><body><h1>Hello</h1></body></html>';
-    assert.strictEqual(actualResponse, expectedResponse);
+    const expectedResponse = 'HTTP/1.1 200\r\n\r\n<html><body><h1>Hello</h1></body></html>\r\n';
+    assert.strictEqual(mockedSocket.actualResponse, expectedResponse);
   });
 
   it('Should give unknown and set status code for wrong uri', () => {

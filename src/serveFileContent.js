@@ -4,7 +4,7 @@ const html = header => `<html><body><h1>${header}</h1></body></html>`;
 const serveFileContent = (request, response) => {
   let { uri } = request;
   if (uri === '/') {
-    uri = 'sample';
+    uri = '/sample';
   }
   const fileName = './public' + uri;
 
@@ -14,8 +14,8 @@ const serveFileContent = (request, response) => {
     return;
   }
 
-  const content = fs.readFileSync(fileName, 'utf8');
-  response.sent(html(content));
+  const content = fs.readFileSync(fileName);
+  response.sent(content);
 };
 
 module.exports = { serveFileContent };

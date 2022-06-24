@@ -1,12 +1,15 @@
 # TODO
 
-  - [ ] Handle images 
+  - [ ] Add headers to the response
+  - [ ] Introduce end method in response
+
 
 # CONSIDER
 
 
 # DONE
 
+  - [x] Handle images 
   - [x] Introduce serving file content
   - [x] Make the socket secure, now socket is exposed to any actions
   - [x] Enclose the socket in a class and give behaviors on socket

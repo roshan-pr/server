@@ -1,3 +1,18 @@
+const EOF = '\r\n';
+
+const getCodeMessage = (code) => {
+  const codeMessage = {
+    200: 'OK',
+    404: 'file not found'
+  };
+  return codeMessage[code];
+};
+
+const getStatusLine = (code) => {
+  const message = getCodeMessage(code);
+  return ['HTTP/1.1', code, message, EOF].join(' ');
+};
+
 class Response {
   #socket;
   #statusCode;
@@ -15,7 +30,9 @@ class Response {
   }
 
   sent(body) {
-    this.#write(`HTTP/1.1 ${this.#statusCode}\r\n\r\n${body}\r\n`);
+    this.#write(getStatusLine(this.#statusCode));
+    this.#write(EOF);
+    this.#write(body);
     this.#socket.end();
   }
 }
