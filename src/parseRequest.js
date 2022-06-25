@@ -1,6 +1,20 @@
+const parseUri = (paramString) => {
+  const queryParams = {};
+  const [uri, queryStrings] = paramString.split('?');
+
+  if (queryStrings) {
+    const queries = queryStrings.split('&');
+    queries.forEach(query => {
+      const [param, value] = query.split('=');
+      queryParams[param] = value;
+    });
+  }
+  return { uri, ...queryParams };
+};
+
 const parseRequestLine = (line) => {
-  const [method, uri, httpVersion] = line.split(' ');
-  return { method, uri, httpVersion };
+  const [method, rawUri, httpVersion] = line.split(' ');
+  return { method, ...parseUri(rawUri), httpVersion };
 };
 
 const parseHeader = (line) => {
@@ -23,9 +37,9 @@ const parseHeaders = (lines) => {
 
 const parseRequest = (chunk) => {
   const lines = chunk.split('\r\n');
-  const { method, uri, httpVersion } = parseRequestLine(lines[0]);
+  const parsedRequestLine = parseRequestLine(lines[0]);
   const headers = parseHeaders(lines.slice(1));
-  return { method, uri, httpVersion, headers };
+  return { ...parsedRequestLine, headers };
 };
 
 module.exports = { parseHeaders, parseRequestLine, parseRequest };

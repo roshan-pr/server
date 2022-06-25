@@ -1,6 +1,5 @@
 # TODO
 
-  - [ ] Take query parameters from the request
   - [ ] Implement form 
     - [ ] Accept request from form
 
@@ -12,6 +11,7 @@
 
 # DONE
 
+  - [x] Take query parameters from the request
   - [x] Redirect requests
   - [x] Load all content of files to memory upfront
   - [x] Parameterize the path of the server, where to serve files from
