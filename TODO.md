@@ -1,5 +1,9 @@
 # TODO
 
+  - [ ] Take query parameters from the request
+  - [ ] Implement form 
+    - [ ] Accept request from form
+
 
 # CONSIDER
 
@@ -8,6 +12,7 @@
 
 # DONE
 
+  - [x] Redirect requests
   - [x] Load all content of files to memory upfront
   - [x] Parameterize the path of the server, where to serve files from
   - [x] Handle dynamic handler like count
