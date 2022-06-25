@@ -1,8 +1,9 @@
 # TODO
 
-
+  - [ ] Load all content of files to memory upfront
 
 # CONSIDER
+
   - [ ] Introduce handler for logging the requests
 
 

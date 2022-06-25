@@ -4,7 +4,7 @@ const { Response } = require('./src/response.js');
 const { createHandler } = require('./src/handler.js');
 
 const onNewConnection = (socket, requestHandler, resourceFrom) => {
-  socket.on('error', (err) => console.log(`\n${err.message}\n`));
+  socket.on('error', (err) => console.log(`${err.message}`));
 
   socket.on('data', (chunk) => {
     const request = parseRequest(chunk.toString());
@@ -26,6 +26,6 @@ const main = (resourceFrom) => {
   startServer(PORT, createHandler(), resourceFrom);
 };
 
-main(process.argv[2]);
+main(...process.argv.slice(2));
 
 module.exports = { onNewConnection, startServer };

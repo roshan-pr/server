@@ -13,7 +13,10 @@ const determineContentType = (extension) => {
   return contentTypes[extension] || 'text/plain';
 };
 
-const serveFileContent = ({ uri }, response, resourceFrom) => {
+const serveFileContent = ({ uri }, response, resourceFrom = './public') => {
+  if (uri === '/') {
+    uri = '/sample'
+  }
   const fileName = resourceFrom + uri;
 
   if (!fs.existsSync(fileName)) {
@@ -26,7 +29,7 @@ const serveFileContent = ({ uri }, response, resourceFrom) => {
 
   const content = fs.readFileSync(fileName);
   response.send(content);
-  return false;
+  return true;
 };
 
 module.exports = { serveFileContent };
