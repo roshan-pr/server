@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { readFiles } = require('./readFileContent.js');
 
 const getExtension = (fileName) => {
   const index = fileName.lastIndexOf('.');
@@ -13,23 +14,26 @@ const determineContentType = (extension) => {
   return contentTypes[extension] || 'text/plain';
 };
 
-const serveFileContent = ({ uri }, response, resourceFrom = './public') => {
-  if (uri === '/') {
-    uri = '/sample'
-  }
-  const fileName = resourceFrom + uri;
+const serveFileContent = (directory = './public') => {
+  const fileContents = readFiles(directory);
+  return ({ uri }, response) => {
+    if (uri === '/') {
+      uri = '/sample'
+    };
 
-  if (!fs.existsSync(fileName)) {
-    return false;
-  }
+    const fileName = directory + uri;
+    const content = fileContents[fileName];
+    if (!content) {
+      return false;
+    };
 
-  const extension = getExtension(fileName);
-  const contentType = determineContentType(extension);
-  response.setHeader('content-type', contentType);
+    const extension = getExtension(fileName);
+    const contentType = determineContentType(extension);
+    response.setHeader('content-type', contentType);
 
-  const content = fs.readFileSync(fileName);
-  response.send(content);
-  return true;
-};
+    response.send(content);
+    return true;
+  };
+}
 
 module.exports = { serveFileContent };

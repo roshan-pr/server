@@ -23,7 +23,7 @@ const startServer = (port, requestHandler, resourceFrom) => {
 
 const main = (resourceFrom) => {
   const PORT = 8000;
-  startServer(PORT, createHandler(), resourceFrom);
+  startServer(PORT, createHandler(resourceFrom));
 };
 
 main(...process.argv.slice(2));

@@ -1,6 +1,5 @@
 # TODO
 
-  - [ ] Load all content of files to memory upfront
 
 # CONSIDER
 
@@ -9,6 +8,7 @@
 
 # DONE
 
+  - [x] Load all content of files to memory upfront
   - [x] Parameterize the path of the server, where to serve files from
   - [x] Handle dynamic handler like count
   - [x] Utilize multiple handlers, to handle different requests
