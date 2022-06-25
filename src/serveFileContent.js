@@ -17,9 +17,6 @@ const determineContentType = (extension) => {
 const serveFileContent = (directory = './public') => {
   const fileContents = readFiles(directory);
   return ({ uri }, response) => {
-    if (uri === '/') {
-      uri = '/sample'
-    };
 
     const fileName = directory + uri;
     const content = fileContents[fileName];
