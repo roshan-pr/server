@@ -1,16 +1,16 @@
 # TODO
 
-  - [ ] Implement form 
-    - [ ] Accept request from form
-
+  - [ ] Handle server crash for wrong input
+    - [ ] Redirect to same page
 
 # CONSIDER
 
   - [ ] Introduce handler for logging the requests
 
-
 # DONE
 
+  - [x] Implement form 
+    - [x] Accept request from form
   - [x] Take query parameters from the request
   - [x] Redirect requests
   - [x] Load all content of files to memory upfront

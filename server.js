@@ -8,7 +8,7 @@ const onNewConnection = (socket, requestHandler, resourceFrom) => {
 
   socket.on('data', (chunk) => {
     const request = parseRequest(chunk.toString());
-    console.log(request.method, request.uri);
+    console.log(request.method, request.uri, request.queryParams);
     const response = new Response(socket);
     requestHandler(request, response, resourceFrom);
   });
